@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        html, body {
+            height: 100%;
+            background-color: #ffc0cb; /* Màu hồng */
+            margin: 0;
+            padding: 0;
+        }
+        .container-fluid {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .bs-sidebar {
+            background: #ffc0cb; /* Màu hồng */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            transition: background-color 0.3s; /* Hiệu ứng thay đổi màu nền */
+        }
+        .bs-sidebar:hover {
+            background-color: #ff7eb9; /* Màu hồng nhạt khi hover */
+        }
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #ff1493;
+        }
+        .login-register {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .login-register a {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 1px; /* Thu hẹp lại khoảng cách */
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+      
+    </style>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <center><img src="{% static 'images/hieu.png' %}" class="img-responsive" style="max-height:150px"></center>
+            </div>
+            <div class="col-sm-8">
+                <center><h1>Giới thiệu bản thân</h1></center>
+            </div>
+            <div class="col-sm-2">
+                <div class="login-register">
+                    {% if user.username %}
+                        <p>Xin chào {{ user.username }}</p>
+                        <p><a href="{% url 'logout' %}">Đăng xuất</a></p>
+                    {% else %}
+                        <p>
+                            <a href="{% url 'login' %}" class="btn btn-success">Đăng nhập</a>
+                            <a href="{% url 'register' %}" class="btn btn-primary">Đăng ký</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="bs-sidebar">
+                <ul class="nav flex-column">
+                    <li class="nav-item selected"> <!-- Thêm class selected ở đây -->
+                      <a class="nav-link" href="/">Thông tin cá nhân </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact'%}">Liên hệ </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-10">
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid">
+            <a href="https://github.com/hieuchaydi">Github</a><br><a href="https://www.facebook.com/cos.204">Facebook</a>
+        </div>
+    </footer>
+    
+
+</body>
+</html>

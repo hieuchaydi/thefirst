@@ -1,0 +1,25 @@
+{% extends "pages/base.html" %}
+{% block title %}home{% endblock title %}
+{% block content %}
+<style>
+    /* CSS cho nội dung của trang chủ */
+    .home-info {
+        margin-top: 20px; /* Khoảng cách giữa các phần tử */
+        padding: 10px; /* Khoảng cách nội dung từ viền */
+        background-color: #fff; /* Màu nền trắng */
+        border-radius: 8px; /* Bo góc */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    }
+
+    .home-info p {
+        margin: 0; /* Loại bỏ khoảng cách ngoài */
+        padding: 5px 0; /* Khoảng cách nội dung */
+    }
+</style>
+
+<div class="home-info">
+    <p>Tên: Nguyễn Văn Hiếu</p>
+    <p>Năm sinh: 2004</p>
+    <p>Trường CNTT - TT TP. Thái Nguyên</p>
+</div>
+{% endblock content %}

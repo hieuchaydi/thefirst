@@ -1,0 +1,10 @@
+{% extends "pages/base.html" %}
+{% block title %}{{post.title}}{% endblock title %}
+{% block content %}
+
+<h3> <a href ='{% url 'post' post.id %}'>{{post.title}} </a> </h3>
+<h6> on {{post.date}} </h6>
+{{post.body|safe| linebreaks}}
+<img src="{{post.image.url}}" width="500px" height="300px"/>
+
+{% endblock content %}

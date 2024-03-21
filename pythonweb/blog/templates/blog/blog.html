@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+  {% for post in Posts %}
+    <h3>{{ post.date|date:"d-m-Y" }} <a href="/blog/{{ post.id }}">{{ post.title }}</a></h3>
+    {% if post.image %}
+      <img src="{{ post.image.url }}" width="500px" height="300px"/>
+    {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Tiếp theo</a>
+  {% endif %}
+{% endblock %}
